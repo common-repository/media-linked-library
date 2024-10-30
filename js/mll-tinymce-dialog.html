@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Disable browser caching of dialog window -->
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="pragma" content="no-cache" />
+        <script>
+            document.write('<link rel="stylesheet" type="text/css" href="mll-tinymce-dialog.css?v='+top.MLL_VERSION+'" />');
+        </script>
+    </head>
+    <body tabindex="0">
+        <div id="leftContainer">
+            <ul id="tabs">
+                <li>Search</li>
+                <li>Browser</li>
+            </ul>
+            <ul id="tab">
+                <li>
+                    <div>
+                        <label for="search">Search: </label>
+                        <input type="text" id="search" name="search" placeholder="Press ENTER to submit" />
+                    </div>
+                    <div>
+                        <label for="category">Category: </label>
+                        <select name="category" id="category">
+                            <option value="0">[All]</option>
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <div style="position:relative;">
+                        <label for="selectFile">Upload: </label>
+                        <input type="button" id="selectFile" class="button" value="Select Files" />
+                        <input type="file" id="file" name="file" class="button" multiple="multiple" style="" />
+                        <span style="font-size:70%;">into</span>
+                        <span style="font-size:60%" id="folderPath"></span>
+                        <div style="position:absolute; right:0px; top:0px"><input type="button" id="btnUpload" value="Upload" /></div>
+                    </div>
+                    <div style="position:relative;"> 
+                        <label for="selectFile">New Folder: </label>
+                        <input type="text" id="newFolder" name="newFolder" placeholder="Enter folder name" />
+                        <div style="position:absolute; right:0px; top:0px"><input type="button" id="btnCreateFolder" value="Create Folder" /></div>
+                    </div>
+                </li>
+            </ul>
+            <div id="mediaContainer"></div>
+        </div>
+        <div id="rightContainer">
+            <div id="mll-noselect"></div>
+            <div id="mll-select" style="display: none;">
+                <div class="mll-thumbnail"></div>
+                <div class="mll-imagetext"></div>
+                <form>
+                    <div>
+                        <label for="link_id">Link ID: </label>
+                        <input type="text" id="link_id" name="link_id" style="width: 40px" />
+                    </div>
+                    <div>
+                        <label for="link_id">New window</label>
+                        <input type="checkbox" id="link_new" name="link_new" value="1" />
+                    </div>
+                    <div>
+                        <label for="img_width">Dimensions (W x H)</label>
+                        <input type="text" id="img_width" name="img_width" style="width: 40px" /> x 
+                        <input type="text" id="img_height" name="img_height" size="5" style="width: 40px" />
+                    </div>
+                    <div style="display: block; text-align: right; margin-top: 0.5em">
+                            <input type="submit" id="insert" name="insert" class="button button-primary button-large" value="Add / Update" />
+                            <input type="button" id="cancel" name="cancel" value="Cancel" onClick="top.tinymce.activeEditor.windowManager.close();" />
+                            <input type="hidden" id="media_id" name="media_id" />
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+        <script type="text/javascript">
+            // Pass current document to plugin 'mll_plugin' using initDialog(context) method
+            top.tinymce.activeEditor.plugins.mll_plugin.initDialog( document.getElementsByTagName("body")[0] );
+        </script>
+    </body>
+</html>
